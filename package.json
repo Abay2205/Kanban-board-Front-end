@@ -3,10 +3,11 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
-    "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "start": "ng serve --port 4203 --proxy-config proxy-local.conf.json",
+    "build": "NODE_ENV=production node --max_old_space_size=6144 ./node_modules/@angular/cli/bin/ng build --configuration production",
+    "test": "ng test",
+    "lint": "ng lint",
+    "e2e": "ng e2e"
   },
   "private": true,
   "dependencies": {
@@ -18,6 +19,13 @@
     "@angular/platform-browser": "^14.0.0",
     "@angular/platform-browser-dynamic": "^14.0.0",
     "@angular/router": "^14.0.0",
+    "@auth0/angular-jwt": "^5.1.2",
+    "@ionic/angular": "^6.4.3",
+    "bootstrap": "^5.2.3",
+    "bootstrap-icons": "^1.10.4",
+    "cdk": "^2.63.2",
+    "chart.js": "^4.2.1",
+    "ionicons": "^6.1.1",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
@@ -26,6 +34,8 @@
     "@angular-devkit/build-angular": "^14.0.2",
     "@angular/cli": "~14.0.2",
     "@angular/compiler-cli": "^14.0.0",
+    "@ionic/angular-toolkit": "latest",
+    "@ngxs/store": "^3.7.6",
     "@types/jasmine": "~4.0.0",
     "jasmine-core": "~4.1.0",
     "karma": "~6.3.0",

@@ -1,0 +1,57 @@
+<div class="container mt-5 text-center">
+  <input type="text"
+         class="form-control"
+         style="margin-bottom: 10px; width: 100%"
+         placeholder="Search product... //front"
+         [(ngModel)]="searchText"
+  />
+
+        <div class="row align-items-start">
+          <div class="card col" *ngFor="let task of tasks | textFilter: searchText">
+            <div class="product">
+              <div class="image">
+                <img [src]="('/zuul/back10/back10/photo/download/' + task.taskImageId  | secure) | async" alt="..." >
+              </div>
+              <div class="info">
+                <h3>{{task.taskName}}</h3>
+                <h3>{{task.taskId}}</h3>
+                <ul class="rating" >
+                  <li>
+                    <ion-icon name="star"></ion-icon>
+                  </li>
+                  <li>
+                    <ion-icon name="star"></ion-icon>
+                  </li>
+                  <li>
+                    <ion-icon name="star"></ion-icon>
+                  </li>
+                  <li>
+                    <ion-icon name="star"></ion-icon>
+                  </li>
+                  <li>
+                    <ion-icon name="star-half-outline"></ion-icon>
+                  </li>
+                </ul>
+                <div class="info-price">
+                  <span class="price">{{task.status}}</span>
+                  <button class="add-to-cart">
+                    <ion-icon name="cart-outline"></ion-icon>
+                  </button>
+                </div>
+                <button (click)="updateTask(task.taskId)" class="btn btn-info" style="margin-right: 5px">Update</button>
+                <button (click)="deleteTask(task.taskId)" class="btn btn-danger">Delete</button>
+              </div>
+            </div>
+            <div *ngFor="let subtask of task.subtasks">
+              <ul>
+              <li>{{subtask.subtaskId}}</li>
+                <li>{{subtask.subtaskName}}</li>
+                <li>{{subtask.description}}</li>
+                <li> {{subtask.completed}}</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+

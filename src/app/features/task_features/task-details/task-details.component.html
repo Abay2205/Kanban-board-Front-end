@@ -1,0 +1,60 @@
+<div>
+  <h2>Task details</h2>
+  <h3>Task name: {{tasks.taskName}}</h3>
+  <p>Task description: {{tasks.description}}</p>
+  <h5>Task priority: {{tasks.priority}}</h5>
+  <h5>Task status: {{tasks.status}}</h5>
+  <h5>Task developer: {{tasks.developer}}</h5>
+  <h5>Task created At: {{tasks.createdAt | date:'dd/MM/yyyy HH:mm'}}</h5>
+  <h5>Task deadline: {{tasks.deadlineHours}} hours</h5>
+  <h5> Осталось времени {{getRemainingTime(tasks)}} </h5>
+  <table class="table table-hover">
+    <thead>
+    <th>Subtask Id</th>
+    <th>Subtask Name</th>
+    <th>Subtask Description</th>
+    <th>Subtask IsCompleted</th>
+    <th>Actions</th>
+    </thead>
+    <tbody>
+    <tr *ngFor="let subtask of tasks.subtasks">
+      <td>{{subtask.subtaskId}}</td>
+      <td>{{subtask.subtaskName}}</td>
+      <td style="max-width: 300px;">{{subtask.description}}</td>
+      <td><input type="checkbox" style="width: 20px; height: 20px" [(ngModel)]="subtask.completed"
+                 (change)="Changer(subtask.subtaskId)"></td>
+      <td>
+        <button (click)="deleteSubtask(subtask.subtaskId)" style="margin-right: 5px" class="btn btn-outline-dark">
+          Delete
+        </button>
+        <button (click)="updateSubtask(subtask.subtaskId)" class="btn btn-outline-dark">Update</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+<!--  <h5>Subtasks:</h5>-->
+<!--  <div *ngFor="let subtask of tasks.subtasks">-->
+<!--    <ul>-->
+<!--      <li>Id: {{subtask.subtaskId}}</li>-->
+<!--      <li>Subtask name: {{subtask.subtaskName}}</li>-->
+<!--      <li>Subtask description: {{subtask.description}}</li>-->
+<!--      <li>-->
+<!--        Subtask isCompleted:-->
+<!--        <input type="checkbox" style="width: 20px; height: 20px" [(ngModel)]="subtask.completed"-->
+<!--               (change)="Changer(subtask.subtaskId)">-->
+<!--      </li>-->
+<!--    </ul>-->
+<!--    <button (click)="deleteSubtask(subtask.subtaskId)" class="btn btn-outline-dark">Delete</button>-->
+<!--    <button (click)="updateSubtask(subtask.subtaskId)" class="btn btn-outline-dark">Update</button>-->
+<!--  </div>-->
+<!--</div>-->
+<div class="container" style="width: 700px; height: 700px;">
+  <div class="row">
+    <div class="col-lg-6">
+      <h2>Pie chart</h2>
+      <canvas id="piechart" width="300px" height="100px"></canvas>
+    </div>
+  </div>
+</div>
+</div>

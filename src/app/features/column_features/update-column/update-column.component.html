@@ -1,0 +1,26 @@
+<div class="col-md-6 offset-md-3 form-group">
+  <h3> Update column </h3>
+  <form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label>Column title</label>
+      <input type="text" class="form-control" id="title"
+             [(ngModel)]="columns.title" name="title">
+    </div>
+    <div class="form-group">
+      <label>Column color</label>
+      <input type="text" class="form-control" id="color"
+             [(ngModel)]="columns.color" name="color">
+      <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        Dropdown
+      </a>
+      <ul class="dropdown-menu">
+        <li><a class="dropdown-item" >black</a></li>
+        <li><a class="dropdown-item" >blue</a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li><a class="dropdown-item" >red</a></li>
+      </ul>
+    </div>
+    <button class="btn btn-success">Submit</button>
+  </form>
+</div>
+

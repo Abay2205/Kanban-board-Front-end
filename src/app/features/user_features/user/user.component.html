@@ -1,0 +1,26 @@
+<div class="container">
+      <h3 class="text-center">Users list</h3>
+      <table class="table table=striped" style="table-layout: fixed;">
+        <thead>
+<!--        <th>Id</th>-->
+        <th>Name</th>
+        <th>Username</th>
+<!--        <th>password</th>-->
+        <th>Role</th>
+        <th>Actions</th>
+        </thead>
+        <tbody>
+        <tr *ngFor = "let user of users">
+<!--          <td>{{user.id}}</td>-->
+          <td>{{user.name}}</td>
+          <td>{{user.username}}</td>
+<!--          <td>{{user.password}}</td>-->
+          <td *ngFor="let role of user.roles">{{role.name}}</td>
+          <td>
+            <button (click)="updateUser(user.id)" class="btn btn-outline-dark" style="margin-right: 5px">Update</button>
+            <button (click) = "deleteUser(user.id)" class="btn btn-outline-dark">Delete</button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+</div>

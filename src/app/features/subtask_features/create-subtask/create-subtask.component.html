@@ -1,0 +1,23 @@
+<div class="col-md-6 offset-md-3 form-group">
+  <h3> Create task </h3>
+  <form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label>Subtask name</label>
+      <input type="text" class="form-control" id="productName"
+             [(ngModel)]="subtasks.subtaskName" name="productName">
+    </div>
+    <div class="form-group">
+      <label>Subtask description</label>
+      <input type="text" class="form-control" id="productType"
+             [(ngModel)]="subtasks.description" name="productType">
+    </div>
+    <div class="form-group">
+      <label>IsCompleted</label>
+      <select class="form-control" id="productModel" [(ngModel)]="subtasks.completed" name="productModel">
+        <option value="true">true</option>
+        <option value="false">false</option>
+      </select>
+    </div>
+    <button class="btn btn-success" style="margin-top: 10px">Submit</button>
+  </form>
+</div>

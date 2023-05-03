@@ -1,0 +1,45 @@
+<div class="col-md-6 offset-md-3 form-group">
+  <h3> Update task </h3>
+  <form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label>Task name</label>
+      <input type="text" class="form-control" id="taskName"
+             [(ngModel)]="tasks.taskName" name="taskName">
+    </div>
+    <div class="form-group">
+      <label>Task description</label>
+      <input type="text" class="form-control" id="description"
+             [(ngModel)]="tasks.description" name="description">
+    </div>
+    <div class="form-group">
+      <label>Task status</label>
+      <input type="text" class="form-control" id="status"
+             [(ngModel)]="tasks.status" name="status">
+    </div>
+    <div class="form-group">
+      <label>Task priority</label>
+      <input type="text" class="form-control" id="priority"
+             [(ngModel)]="tasks.priority" name="priority">
+    </div>
+    <div class="form-group">
+      <label>Task developer</label>
+      <input type="text" class="form-control" id="developer"
+             [(ngModel)]="tasks.developer" name="developer">
+    </div>
+    <div class="form-group">
+      <label>Dedline hours</label>
+      <input type="number" class="form-control" id="dedline"
+             [(ngModel)]="tasks.deadlineHours" name="priority">
+    </div>
+    <label>Select files from your computer</label>
+    <form enctype="multipart/form-data">
+      <input type="file" (change)="onUploadFiles($any($event.target).files)" name="files" class="form-control"/>
+    </form>
+
+    <div class="card" style="width: 18rem;">
+      <img class="card-img-top" [src]="('/zuul/back10/back10/photo/download/' + tasks.taskImageId  | secure) | async" alt="">
+    </div>
+    <button class="btn btn-success" style="margin-top: 10px">Submit</button>
+  </form>
+</div>
+<button (click)="onDownloadFile(tasks.taskImageId)">GetDoc</button>

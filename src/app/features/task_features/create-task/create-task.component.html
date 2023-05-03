@@ -1,0 +1,36 @@
+<div class="col-md-6 offset-md-3">
+  <h3 class="text-center"> Create task </h3>
+  <form (ngSubmit)="onSubmit()" class="form-group">
+    <div class="form-group">
+      <label>Task name</label>
+      <input type="text" class="form-control" id="productName"
+             [(ngModel)]="tasks.taskName" name="productName">
+    </div>
+    <div class="form-group">
+      <label>Task description</label>
+      <input type="text" class="form-control" id="productType"
+             [(ngModel)]="tasks.description" name="productType">
+    </div>
+    <div class="form-group">
+      <label>Task status</label>
+      <input type="text" class="form-control" id="productModel"
+             [(ngModel)]="tasks.status" name="productModel">
+    </div>
+    <div class="form-group">
+      <label>Task priority</label>
+      <input type="number" class="form-control" id="productNumber"
+             [(ngModel)]="tasks.priority" name="productNumber">
+    </div>
+    <div class="form-group">
+      <label>Task developer</label>
+      <input type="text" class="form-control" id="productPrice"
+             [(ngModel)]="tasks.developer" name="productPrice">
+    </div>
+    <div class="form-group">
+      <label>Dedline Hours</label>
+      <input type="number" class="form-control" id="dedlineTime"
+             [(ngModel)]="tasks.deadlineHours" name="productPrice">
+    </div>
+    <button class="btn btn-success" style="margin-top: 10px">Submit</button>
+  </form>
+</div>

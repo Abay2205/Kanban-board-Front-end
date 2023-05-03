@@ -1,0 +1,66 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-6 col-lg-3 mb-3 col-head" *ngFor="let column of columns">
+      <div class="d-flex justify-content-between align-items-center p-2 shadow-sm column-header"
+           [ngStyle]="{background: column.color}">
+        <h3 class="m-0" style="cursor: pointer; font-weight: bold" (click)="sortColumn('id')">{{column.title}}</h3>
+        <button class="icon-delete" (click)="deleteColumn(column.columnId)">
+          <ion-icon name="trash-outline" [ngStyle]="{background: column.color}"></ion-icon>
+        </button>
+        <button class="icon-delete" (click)="updateColumn(column.columnId)">
+          <ion-icon name="create-outline" [ngStyle]="{background: column.color}"></ion-icon>
+        </button>
+      </div>
+      <div class="add-task-btn">
+        <button class="w-100 mb-1 btn-add" (click)="createTask(column.columnId)">
+          <ion-icon name="add-outline" style="font-size: 35px;"></ion-icon>
+        </button>
+      </div>
+      <!--      <button (click)="sortTasks('taskName')">Sort tasks</button>-->
+      <div *ngFor="let task of column.tasks" class="example-list">
+        <div class="example-box" [ngStyle]="{background: column.color}">
+          <div class="product">
+            <div class="image" *ngIf="task.showInfo && task.taskImageId!==null">
+              <img [src]="('/zuul/back10/back10/photo/download/' + task.taskImageId  | secure) | async"
+                   alt="...">
+            </div>
+            <div class="info">
+              <h4>{{task.taskName}}</h4>
+              <button class="btn btn-outline-dark" (click)="toggleInfo(task)">Show Info</button>
+              <div *ngIf="task.showInfo">
+                <h5>Status: {{column.title}}</h5>
+                <!--              <h5>Completed Subtasks: {{completedSubtaskPercent}}%</h5>-->
+                <h5>Completed Subtasks: {{getCompletedSubtaskPercent(task)}}%</h5>
+                <h5 [style.color]="getRemainingTime(task) > '5' ? 'red' : 'black'"> Осталось времени {{getRemainingTime(task)}} </h5>
+                <h5>Deadline: {{task.deadlineHours}} часов</h5>
+                <h5>Created At: {{task.createdAt | date:'dd/MM/yyyy HH:mm'}}</h5>
+                <h5 [style.color]="task.priority > 5 ? 'red' : 'black'">Priority: {{ task.priority }}</h5>
+                <button (click)="updateTask(task.taskId)" class="btn btn-outline-dark" style="margin-right: 5px">Update
+                </button>
+                <button (click)="deleteTask(task.taskId)" class="btn btn-outline-dark" style="margin-right: 5px">Delete
+                </button>
+                <button (click)="taskDetails(task.taskId)" class="btn btn-outline-dark" style="margin-right: 5px">View
+                </button>
+                <button (click)="createSubtask(task.taskId)" class="btn btn-outline-dark" style="margin-right: 5px">
+                  Create
+                  subtask
+                </button>
+                <div></div>
+                <button *ngIf="column.columnId>1" (click)="left(column.columnId, task.taskId)"
+                        class="btn btn-outline-dark" style="margin-top: 5px; margin-right: 5px">
+                  <ion-icon name="arrow-back-outline"></ion-icon>
+                </button>
+                <button *ngIf="column.columnId<4" (click)="right(column.columnId, task.taskId)"
+                        class="btn btn-outline-dark"
+                        style="margin-top: 5px">
+                  <ion-icon name="arrow-forward-outline"></ion-icon>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-mychart></app-mychart>
